@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Aporte IESS</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F3F3F3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .window {
+            background-color: #FFFFFF;
+            width: 400px;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            border-color: #0078D7;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #005A9E;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window">
+        <h2>Cálculo de Aporte IESS</h2>
+        
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="text" id="apellido" placeholder="Apellido">
+        <input type="number" id="edad" placeholder="Edad">
+        <input type="number" id="salario" placeholder="Salario (Ej: 500)">
+        
+        <button onclick="calcular()">Calcular</button>
+    </div>
+
+    <script>
+        function calcular() {
+            var nombre = document.getElementById('nombre').value;
+            var apellido = document.getElementById('apellido').value;
+            var edad = document.getElementById('edad').value;
+            var salario = document.getElementById('salario').value;
+
+            if (!nombre || !apellido || !edad || !salario) {
+                alert("Todos los campos deben estar completos");
+                return;
+            }
+
+            var salarioNum = parseFloat(salario);
+            if (isNaN(salarioNum)) {
+                alert("El salario debe ser un número válido");
+                return;
+            }
+
+            var aporte = salarioNum * 0.0945;
+
+            var mensaje = "Bienvenido " + nombre + " " + apellido + "\n" +
+                          "Tienes " + edad + " años\n" +
+                          "Tu aporte mensual es $" + aporte.toFixed(2);
+            
+            alert(mensaje);
+        }
+    </script>
+
+</body>
+</html>
