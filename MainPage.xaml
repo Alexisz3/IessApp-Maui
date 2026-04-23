@@ -1,42 +1,146 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IessApp.MainPage">
-
+             x:Class="lessApp.MainPage"
+             BackgroundColor="#F4F7F6">
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,50,30,30"
-            Spacing="20">
-            
-            <Label
-                Text="Cálculo de Aporte IESS"
-                FontSize="24"
-                FontAttributes="Bold"
-                HorizontalOptions="Center" />
+        <VerticalStackLayout HorizontalOptions="Center" WidthRequest="900" Padding="20,40,20,40" Spacing="25">
 
-            <Entry
-                x:Name="NombreEntry"
-                Placeholder="Nombre" />
+            <Grid ColumnDefinitions="Auto, *" Padding="0,0,0,10">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="SUDAMERICANO" TextColor="#005B96" FontSize="28" FontAttributes="Bold, Italic" />
+                    <Label Text="Instituto Tecnológico Superior" TextColor="#666666" FontSize="13" />
+                </VerticalStackLayout>
+                <Label Grid.Column="1" Text="Portal de Admisiones" TextColor="#333333" FontSize="18" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="Center"/>
+            </Grid>
 
-            <Entry
-                x:Name="ApellidoEntry"
-                Placeholder="Apellido" />
+            <Frame BackgroundColor="White" CornerRadius="15" HasShadow="True" BorderColor="Transparent" Padding="0">
+                <VerticalStackLayout>
 
-            <Entry
-                x:Name="EdadEntry"
-                Placeholder="Edad"
-                Keyboard="Numeric" />
+                    <BoxView Color="#005B96" HeightRequest="6" HorizontalOptions="Fill" />
 
-            <Entry
-                x:Name="SalarioEntry"
-                Placeholder="Salario"
-                Keyboard="Numeric" />
+                    <Grid ColumnDefinitions="6*, 4*" Padding="40" ColumnSpacing="40">
 
-            <Button
-                Text="Calcular"
-                Clicked="OnCalcularClicked"
-                HorizontalOptions="Fill" />
+                        <VerticalStackLayout Grid.Column="0" Spacing="20">
+
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="FASE A - GRADO" TextColor="#003366" FontSize="24" FontAttributes="Bold"/>
+                                <Label Text="Formulario de inscripción en línea" FontSize="14" TextColor="#666666"/>
+                            </VerticalStackLayout>
+
+                            <Label Text="Datos Personales" TextColor="#005B96" FontAttributes="Bold" Margin="0,10,0,0"/>
+
+                            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="15" ColumnSpacing="15">
+                                <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Spacing="5">
+                                    <Label Text="Identificación (Cédula/RUC)" FontSize="12" TextColor="#555555" FontAttributes="Bold"/>
+                                    <Frame CornerRadius="8" BorderColor="#DDDDDD" Padding="10,0" HeightRequest="45" HasShadow="False" BackgroundColor="White">
+                                        <Grid ColumnDefinitions="Auto, *">
+                                            <Picker Grid.Column="0" x:Name="pckTipoId" Title="Tipo" WidthRequest="110" TextColor="#333333"/>
+                                            <Entry Grid.Column="1" Placeholder="Número de documento" Keyboard="Numeric" TextColor="#333333"/>
+                                        </Grid>
+                                    </Frame>
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Row="1" Grid.Column="0" Spacing="5">
+                                    <Label Text="Nombres" FontSize="12" TextColor="#555555" FontAttributes="Bold"/>
+                                    <Frame CornerRadius="8" BorderColor="#DDDDDD" Padding="15,0" HeightRequest="45" HasShadow="False" BackgroundColor="White">
+                                        <Entry Placeholder="Ej. Juan Carlos" TextColor="#333333"/>
+                                    </Frame>
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Row="1" Grid.Column="1" Spacing="5">
+                                    <Label Text="Apellidos" FontSize="12" TextColor="#555555" FontAttributes="Bold"/>
+                                    <Frame CornerRadius="8" BorderColor="#DDDDDD" Padding="15,0" HeightRequest="45" HasShadow="False" BackgroundColor="White">
+                                        <Entry Placeholder="Ej. Pérez Gómez" TextColor="#333333"/>
+                                    </Frame>
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Row="2" Grid.Column="0" Spacing="5">
+                                    <Label Text="Teléfono Celular" FontSize="12" TextColor="#555555" FontAttributes="Bold"/>
+                                    <Frame CornerRadius="8" BorderColor="#DDDDDD" Padding="15,0" HeightRequest="45" HasShadow="False" BackgroundColor="White">
+                                        <Entry Placeholder="09XX XXX XXX" Keyboard="Telephone" TextColor="#333333"/>
+                                    </Frame>
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Row="2" Grid.Column="1" Spacing="5">
+                                    <Label Text="Correo Electrónico" FontSize="12" TextColor="#555555" FontAttributes="Bold"/>
+                                    <Frame CornerRadius="8" BorderColor="#DDDDDD" Padding="15,0" HeightRequest="45" HasShadow="False" BackgroundColor="White">
+                                        <Entry Placeholder="correo@ejemplo.com" Keyboard="Email" TextColor="#333333"/>
+                                    </Frame>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <Label Text="Información Académica" TextColor="#005B96" FontAttributes="Bold" Margin="0,15,0,0"/>
+
+                            <Grid RowDefinitions="Auto" ColumnDefinitions="*,*" RowSpacing="15" ColumnSpacing="15">
+                                <VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="5">
+                                    <Label Text="Carrera de Interés" FontSize="12" TextColor="#555555" FontAttributes="Bold"/>
+                                    <Frame CornerRadius="8" BorderColor="#DDDDDD" Padding="10,0" HeightRequest="45" HasShadow="False" BackgroundColor="White">
+                                        <Picker x:Name="pckCarrera" Title="Selecciona una opción" TextColor="#333333"/>
+                                    </Frame>
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="5">
+                                    <Label Text="Modalidad y Campus" FontSize="12" TextColor="#555555" FontAttributes="Bold"/>
+                                    <Frame CornerRadius="8" BorderColor="#DDDDDD" Padding="10,0" HeightRequest="45" HasShadow="False" BackgroundColor="White">
+                                        <Picker x:Name="pckModalidad" Title="Selecciona modalidad" TextColor="#333333"/>
+                                    </Frame>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <Button Text="ENVIAR INSCRIPCIÓN"
+                                    BackgroundColor="#005B96"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    CornerRadius="8"
+                                    HeightRequest="50"
+                                    Margin="0,20,0,0"
+                                    Clicked="OnGuardarClicked">
+                                <Button.Shadow>
+                                    <Shadow Brush="#005B96" Offset="0,5" Radius="10" Opacity="0.4" />
+                                </Button.Shadow>
+                            </Button>
+
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="20">
+
+                            <Frame BackgroundColor="#F0F7FA" BorderColor="Transparent" CornerRadius="12" Padding="25" HasShadow="False">
+                                <VerticalStackLayout Spacing="15">
+                                    <Label Text="¿Necesitas Ayuda?" TextColor="#005B96" FontAttributes="Bold" FontSize="16"/>
+                                    <Label Text="Nuestro equipo de admisiones está listo para guiarte en tu proceso." TextColor="#555555" FontSize="13" LineHeight="1.3"/>
+
+                                    <VerticalStackLayout Spacing="12" Margin="0,10,0,0">
+                                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                                            <Label Text="📱" FontSize="18"/>
+                                            <Label Text="099 648 3605" TextColor="#333333" FontAttributes="Bold" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                                            <Label Text="☎️" FontSize="18"/>
+                                            <Label Text="02 255 5741 (Ext 101)" TextColor="#333333" FontAttributes="Bold" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                                            <Label Text="✉️" FontSize="18"/>
+                                            <Label Text="its@sudamericano.edu.ec" TextColor="#333333" VerticalOptions="Center" FontSize="12"/>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                            <Frame BackgroundColor="#FFFFFF" BorderColor="#DDDDDD" CornerRadius="12" Padding="25" HasShadow="False">
+                                <VerticalStackLayout Spacing="15">
+                                    <Label Text="Enlaces Útiles" TextColor="#333333" FontAttributes="Bold" FontSize="16"/>
+                                    <Label Text="➜ Preguntas Frecuentes" TextColor="#005B96" TextDecorations="Underline" FontSize="13"/>
+                                    <Label Text="➜ Calendario Académico" TextColor="#005B96" TextDecorations="Underline" FontSize="13"/>
+                                    <Label Text="➜ Malla Curricular" TextColor="#005B96" TextDecorations="Underline" FontSize="13"/>
+                                </VerticalStackLayout>
+                            </Frame>
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

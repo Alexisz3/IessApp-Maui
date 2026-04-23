@@ -1,9 +1,9 @@
-﻿namespace IessApp;
+﻿namespace lessApp;
 
 public partial class AppShell : Shell
 {
-	public AppShell()
-	{
-		InitializeComponent();
-	}
+    public AppShell()
+    {
+        InitializeComponent();
+    }
 }

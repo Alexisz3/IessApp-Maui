@@ -1,24 +1,20 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Microsoft.Maui.Controls;
+using System;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+namespace lessApp;
 
-namespace IessApp.WinUI;
-
-/// <summary>
-/// Provides application-specific behavior to supplement the default Application class.
-/// </summary>
-public partial class App : MauiWinUIApplication
+public partial class App : Application
 {
-	/// <summary>
-	/// Initializes the singleton application object.  This is the first line of authored code
-	/// executed, and as such is the logical equivalent of main() or WinMain().
-	/// </summary>
-	public App()
-	{
-		this.InitializeComponent();
-	}
+    public App()
+    {
+        InitializeComponent();
 
-	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+        // ESTA ES LA LÍNEA MÁGICA: Obliga a la app a verse blanca siempre
+        Application.Current.UserAppTheme = AppTheme.Light;
+    }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
+    }
 }
-

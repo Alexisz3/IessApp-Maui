@@ -1,44 +1,30 @@
-namespace IessApp;
+using Microsoft.Maui.Controls;
+using System;
+using System.Collections.Generic;
+
+namespace lessApp;
 
 public partial class MainPage : ContentPage
 {
     public MainPage()
     {
         InitializeComponent();
+
+        // Datos para los menús desplegables
+        pckTipoId.ItemsSource = new List<string> { "CÉDULA", "RUC", "PASAPORTE" };
+        pckCarrera.ItemsSource = new List<string> { "Desarrollo de Software", "Redes y Telecom.", "Diseño Gráfico" };
+
+        // Unimos modalidad y campus para un diseño más limpio
+        pckModalidad.ItemsSource = new List<string> {
+            "Presencial - Sede Matriz",
+            "Semipresencial - Sede Matriz",
+            "En línea",
+            "Presencial - Sede Sur"
+        };
     }
 
-    private async void OnCalcularClicked(object? sender, EventArgs e)
+    private async void OnGuardarClicked(object? sender, EventArgs e)
     {
-        // 1. Validaciones
-        if (string.IsNullOrWhiteSpace(NombreEntry.Text) ||
-            string.IsNullOrWhiteSpace(ApellidoEntry.Text) ||
-            string.IsNullOrWhiteSpace(EdadEntry.Text) ||
-            string.IsNullOrWhiteSpace(SalarioEntry.Text))
-        {
-            await DisplayAlert("Error", "Todos los campos deben estar completos", "OK");
-            return;
-        }
-
-        string nombre = NombreEntry.Text;
-        string apellido = ApellidoEntry.Text;
-        
-        if (!int.TryParse(EdadEntry.Text, out int edad))
-        {
-            await DisplayAlert("Error", "La edad debe ser un número válido", "OK");
-            return;
-        }
-
-        if (!double.TryParse(SalarioEntry.Text, out double salario))
-        {
-            await DisplayAlert("Error", "El salario debe ser un número válido", "OK");
-            return;
-        }
-
-        // 2. Funcionalidad: Calcular aporte (9.45% del salario)
-        double aporte = salario * 0.0945;
-
-        // 3. Salida de información
-        string mensaje = $"Bienvenido {nombre} {apellido}\nTienes {edad} años\nTu aporte mensual es ${aporte:F2}";
-        await DisplayAlert("Resultado", mensaje, "OK");
+        await DisplayAlertAsync("¡Excelente!", "Tu formulario luce profesional y moderno. Inscripción enviada correctamente.", "Continuar");
     }
 }

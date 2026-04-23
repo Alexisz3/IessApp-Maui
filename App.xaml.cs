@@ -1,16 +1,18 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Maui.Controls;
+using System;
 
-namespace IessApp;
+namespace lessApp;
 
 public partial class App : Application
 {
-	public App()
-	{
-		InitializeComponent();
-	}
+    public App()
+    {
+        InitializeComponent();
+    }
 
-	protected override Window CreateWindow(IActivationState? activationState)
-	{
-		return new Window(new AppShell());
-	}
+    // Esta es la nueva forma correcta de arrancar la app en tu versión
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
+    }
 }
